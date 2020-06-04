@@ -1,0 +1,53 @@
+﻿@{ Layout = "_LayoutAdmin"; }
+@model List<Badik56.Models.Objects.Request>
+<section>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <button id="button_menu" class="btn" style="width: 150px;" onclick="leftmenutoggle();">Скрыть меню</button>
+                <div class="card-header">
+                    <h4 class="card-title">Таблица заявок на <a href="https://badik56.ru">Badik56</a></h4>
+                    <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                    <div class="heading-elements">
+                        <ul class="list-inline mb-0">
+                            @*  <li><a data-action="collapse"><i class="ft-minus"></i></a></li>*@
+                            <li><a data-action="reload" href="/Admin/Contacts"><i class="ft-rotate-cw"></i></a></li>
+                            @*<li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                    <li><a data-action="close"><i class="ft-x"></i></a></li>*@
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-content collapse show">
+                    <div class="card-body">
+                        <p>Все заявки сайта BADIK56 </p>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">Тема</th>
+                                    <th scope="col">Сообщение</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Телефон</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <a href="/Admin/Requests?type=Запрос на вывод средств" class="btn mb-1 btn-primary btn-lg btn-block">Показать только выводы партнеров</a>
+
+                                @for (int i = 0; i < Model.Count; i++)
+                                {
+                                    <tr>
+                                        <td>@Model[i].Theme</td>
+                                        <td>@Model[i].Message</td>
+                                        <td>@Model[i].User.Email</td>
+                                        <td>@Model[i].User.Phone</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

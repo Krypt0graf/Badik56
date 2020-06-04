@@ -1,0 +1,100 @@
+﻿@{ Layout = "_LayoutAdmin"; }
+@model Badik56.Models.Objects.Contact
+<section>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <button id="button_menu" class="btn" style="width: 150px;" onclick="leftmenutoggle();">Скрыть меню</button>
+                <div class="card-header">
+                    <h4 class="card-title">Таблица редактирования контактов на <a href="https://badik56.ru">Badik56</a></h4>
+                    <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                    <div class="heading-elements">
+                        <ul class="list-inline mb-0">
+                            @*  <li><a data-action="collapse"><i class="ft-minus"></i></a></li>*@
+                            <li><a data-action="reload" href="/Admin/Contacts"><i class="ft-rotate-cw"></i></a></li>
+                            @*<li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                    <li><a data-action="close"><i class="ft-x"></i></a></li>*@
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-content collapse show">
+                    <div class="card-body">
+                        <p>Для того чтобы изменить контакты на сайте вставьте ссылку или значение контакта в поле и нажмите <code>редактировать</code>. Или очистите поле или нажмите <code>редактировать</code></p>
+                    </div>
+                    <div class="table-responsive">
+                        <form action="/Admin/Contacts" method="post">
+                            <table class="table">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">Название</th>
+                                        <th scope="col">Значение</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr>
+                                        <td>Почта информации</td>
+                                        <td><input type="text" name="EmailInfo" class="form-control" value="@Model.EmailInfo" /></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Почта маркетинг</td>
+                                        <td><input type="text" name="EmailMarketing" class="form-control" value="@Model.EmailMarketing" /></td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>Телефон информации</td>
+                                        <td><input type="text" name="PhoneInfo" class="form-control" value="@Model.PhoneInfo" /></td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>Телефон маркетинг</td>
+                                        <td><input type="text" name="PhoneMarketing" class="form-control" value="@Model.PhoneMarketing" /></td>
+
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>Вконтакте</td>
+                                        <td><input type="text" name="VKLink" class="form-control" value="@Model.VKLink" /></td>
+
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>Одноклассники</td>
+                                        <td><input type="text" name="OKLink" class="form-control" value="@Model.OKLink" /></td>
+
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>Фейсбук</td>
+                                        <td><input type="text" name="FacebookLink" class="form-control" value="@Model.FacebookLink" /></td>
+
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>Инстаграм</td>
+                                        <td><input type="text" name="InstagramLink" class="form-control" value="@Model.InstagramLink" /></td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Инстаграм</td>
+                                        <td><input type="text" name="Address" class="form-control" value="@Model.Address" /></td>
+
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                            <button type="submit" class="btn mb-1 btn-primary btn-lg btn-block">Редактировать контакты</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

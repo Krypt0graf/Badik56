@@ -1,0 +1,90 @@
+﻿@model Badik56.Models.PageObjects.ProductModel
+@section Product {
+    <link rel="stylesheet" type="text/css" href="~/styles/product.css">
+    <link rel="stylesheet" type="text/css" href="~/styles/product_responsive.css">
+}
+@section SProduct{
+    <script src="~/js/product.js"></script>
+}
+<div class="product_details">
+    <div class="container">
+        <div class="row details_row">
+            <!-- Product Image -->
+            <div class="col-lg-6">
+                <div class="details_image">
+                    <div class="details_image_large"><img src="/images/products/@Model.Product.Image[0].Name" alt="">@*<div class="product_extra product_new"><a href="categories.html">New</a></div>*@</div>
+                    <div class="details_image_thumbnails d-flex flex-row align-items-start justify-content-between">
+                        <div class="details_image_thumbnail active" data-image="/images/products/@Model.Product.Image[0].Name"><img src="/images/products/@Model.Product.Image[0].Name" alt=""></div>
+                        @for (int i = 1; i < Model.Product.Image.Count; i++)
+                        {
+                            <div class="details_image_thumbnail" data-image="/images/products/@Model.Product.Image[i].Name"><img src="~/images/products/@Model.Product.Image[i].Name" alt=""></div>
+
+                        }
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Content -->
+            <div class="col-lg-6">
+                <div class="details_content">
+                    <div class="details_name">@Model.Product.Name</div>
+                    <div class="details_price">@Model.Product.Price ₽</div>
+
+                    <!-- In Stock -->
+                    <div class="in_stock_container">
+                        <div class="availability">Наличие:</div>
+                        @*@if (Model.Product.Availability)
+                            {*@
+                        <span>в наличии</span>
+                        @*}
+                            else
+                            {
+                                <span style="color:red;">нет в наличии</span>
+                            }*@
+                    </div>
+                    <div class="details_text">
+                        <p>@Model.Product.Description</p>
+                    </div>
+
+                    <!-- Product Quantity -->
+                    <div class="product_quantity_container">
+                        <div class="product_quantity clearfix">
+                            <span>Шт</span>
+                            <input id="quantity_input" type="text" pattern="[0-9]*" value="@Model.Product.Count">
+                            <div class="quantity_buttons">
+                                <div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
+                                <div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fa fa-chevron-down" aria-hidden="true"></i></div>
+                            </div>
+                        </div>
+                        <div class="button cart_button"><a href="#">В корзину</a></div>
+                    </div>
+
+                    <!-- Share -->
+                    <div class="details_share">
+                        <span>Соц. сети:</span>
+                        <ul>
+                            <li>
+                                <a href="@if (Model.Contacts.VKLink != null)
+                    {
+                        @Model.Contacts.VKLink
+                    }"><i class="fa fa-vk" aria-hidden="true"></i></a>
+                            </li>
+
+                            <li>
+                                <a href="@if (Model.Contacts.OKLink != null)
+                        {
+                            @Model.Contacts.OKLink
+                        }
+                        "><i class="fa fa-odnoklassniki" aria-hidden="true"></i></a>
+                            </li>
+                            <li><a href="@if (Model.Contacts.InstagramLink == null) { @Model.Contacts.InstagramLink } "><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                            <li><a href="@if (Model.Contacts.FacebookLink == null) { @Model.Contacts.FacebookLink } "><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

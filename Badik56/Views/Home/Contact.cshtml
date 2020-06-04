@@ -1,0 +1,91 @@
+﻿@model Badik56.Models.PageObjects.ContactModel
+<!-- Contact -->
+@section Contact{
+    <link rel="stylesheet" type="text/css" href="~/styles/contact.css">
+    <link rel="stylesheet" type="text/css" href="~/styles/contact_responsive.css">
+}
+<div class="wrapper-slider" id="main2">
+    <div class="item-door" id="right"></div>
+    <div class="item-door" id="left"></div>
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+</div>
+<div class="contact" style="margin-top: 10%;">
+    <div class="container">
+        <div class="row">
+
+            <!-- Get in touch -->
+            <div class="col-lg-8 contact_col">
+                <div class="get_in_touch">
+                    <div class="section_title">Свяжитесь с нами.</div>
+                    <div class="section_subtitle">Задайте вопрос, оставьте отзыв или предложение, и мы ответим Вам в течение часа.</div>
+                    <div class="contact_form_container">
+                        <form action="/Home/Contact" id="contact_form" method="post" class="contact_form">
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <!-- Name -->
+                                    <label for="contact_name">Ваше имя*</label>
+                                    <input type="text" name="name" id="contact_name" class="contact_input" required="required">
+                                </div>
+                                <div class="col-xl-6 last_name_col">
+                                    <!-- Last Name -->
+                                    <label for="contact_last_name">Email/Телефон*</label>
+                                    <input type="text" name="contact" id="contact_last_name" class="contact_input" required="required">
+                                </div>
+                            </div>
+                            <div>
+                                <!-- Subject -->
+                                <label for="contact_company">Тема обращения</label>
+                                <input type="text" name="theme" id="contact_company" class="contact_input">
+                            </div>
+                            <div>
+                                <label for="contact_textarea">Текст обращения*</label>
+                                <textarea id="contact_textarea" name="text" class="contact_input contact_textarea" required="required"></textarea>
+                            </div>
+                            <button class="button contact_button"><span>Отправить</span></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="col-lg-3 offset-xl-1 contact_col">
+                <div class="contact_info">
+                    <div class="contact_info_section">
+                        <div class="contact_info_title">Отдел маркетинга</div>
+                        <ul>
+                            <li>Телефон: <span>@Model.Contacts.PhoneMarketing</span></li>
+                            <li>Email: <span>@Model.Contacts.EmailMarketing</span></li>
+                        </ul>
+                    </div>
+                    @*<div class="contact_info_section">
+                            <div class="contact_info_title">Доставка/Товары</div>
+                            <ul>
+                                <li>Phone: <span>+53 345 7953 3245</span></li>
+                                <li>Email: <span>yourmail@gmail.com</span></li>
+                            </ul>
+                        </div>*@
+                    <div class="contact_info_section">
+                        <div class="contact_info_title">Информация</div>
+                        <ul>
+                            <li>Телефон: <span>@Model.Contacts.PhoneInfo</span></li>
+                            <li>Email: <span>@Model.Contacts.EmailInfo</span></li>
+                        </ul>
+                    </div>
+                    <div class="contact_info_section">
+                        <div class="contact_info_title">Местоположение</div>
+                        <ul>
+                            <li>Адрес: <span>@Model.Contacts.Address</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row map_row">
+            <div class="col">
+                <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A2411188cd0fc5799a7445ac2ad1cf1615952a42abfa216148cc7efa99129a3f0&amp;width=1079&amp;height=696&amp;lang=ru_RU&amp;scroll=true"></script>
+            </div>
+        </div>
+    </div>
+</div>

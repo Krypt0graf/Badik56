@@ -1,0 +1,58 @@
+﻿@model Badik56.Models.PageObjects.PartnerModel
+@section Partner{
+    <link href="~/styles/partner.css" type="text/css" rel="stylesheet" />
+}
+@section Index{
+    <link rel="stylesheet" type="text/css" href="~/styles/main_styles.css">
+    <link rel="stylesheet" type="text/css" href="~/styles/responsive.css">
+}
+<div class="contact" style="margin-bottom: 10%;">
+    <div class="sectionD" id="balance">
+        <div class="card">
+            <h3>Просмотр баланса партнера</h3>
+            <label>Введите в поля ниже ваш код партнера и пароль:</label>
+            <input type="text" id="code" placeholder="Код" />
+            <input type="text" id="password" placeholder="Пароль" />
+
+            <button style="cursor: pointer;" onclick="takeBalance();">Посмотреть баланс</button>
+            <div style="width: 150px; align-items: center; align-content: center; justify-content: center;">
+                <label>Ваш баланс: &nbsp;<b id="balanceV">0₽</b></label>
+            </div>
+            <label>Укажите карту, держателя карты и банк для заявки на вывод:</label>
+            <input type="text" id="yourcard" placeholder="Номер карты" />
+            <input type="text" id="yourFIO" placeholder="ФИО держателя карты" />
+            <select id="bank" style="width: 40%;">
+                <option value="не указано" selected disabled>Выберите банк</option>
+                <option value="Сбербанк">Сбербанк</option>
+                <option value="ВТБ">ВТБ</option>
+                <option value="Альфабанк">Альфабанк</option>
+            </select>
+            <button style="cursor: pointer;" onclick="takeMoney();">Запросить вывод</button>
+        </div>
+    </div>
+        
+</div>
+<script src="~/js/sweetalert.js"></script>
+<script type="text/javascript">
+    var amount = 0;
+    function takeBalance() {
+        $.getJSON("/Home/BalancePartner?code=" + $("#code").val() + "&password=" + $("#password").val(), null, function (data) {
+            $("#balanceV").html(data + '₽');
+            amount = +data;
+        });
+    }
+    function takeMoney() {
+        $.ajax({
+        //async: false,
+        type: "GET",
+            url: "/Home/SendRequest",
+            data: "code=" + $("#code").val() + "&amount=" + amount + "&bank=" + $("#bank").val() + "&card=" + $("#yourcard").val() + "&fio=" + $("#yourFIO").val(),
+        success: function (msg) {
+            alert(msg);
+        }
+    });
+      /* $.getJSON("/Home/SendRequest?code=" + $("#code").val() + "&amount=" + amount + "&bank=" + $("#bank").val() + "&card=" + $("#yourcard").val(), null, function (data) {
+           alert(data);
+           });*/
+    }
+</script>

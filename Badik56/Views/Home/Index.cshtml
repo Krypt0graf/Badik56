@@ -1,0 +1,232 @@
+﻿@model Badik56.Models.PageObjects.IndexModel
+<!-- Home -->
+@section Index{
+    <link rel="stylesheet" type="text/css" href="~/styles/main_styles.css">
+    <link rel="stylesheet" type="text/css" href="~/styles/responsive.css">
+}
+<div class="wrapper-slider" id="main2">
+    <div class="item-door" id="right"></div>
+    <div class="item-door" id="left"></div>
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+</div>
+<div class="home">
+    <div class="home_slider_container">
+
+        <!-- Home Slider -->
+        <div class="owl-carousel owl-theme home_slider">
+
+            <!-- Slider Item -->
+            @for (int i = 0; i < Model.Baners.Count; i++)
+            {
+                if (i == 0)
+                {
+                    <div class="owl-item home_slider_item">
+                        <div class="home_slider_background" style="background-image:url(/images/@Model.Baners[i].URL)"></div>
+                        <div class="home_slider_content_container">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="home_slider_content" data-animation-in="fadeIn" data-animation-out="animate-out fadeOut">
+                                            <div class="home_slider_title p-2" style="background-color: #00000040;">Приветствуем Вас в нашем магазине.</div>
+                                            <div class="home_slider_subtitle p-2" style="background-color: #00000040;">В нашем магазине Вы найдете все самые нужные товары для комфортного выздоровления.</div>
+                                            <div class="button home_button" style="background-color: #d8d8ff;"><a href="/Home/Market">Посмотреть товары</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="owl-item home_slider_item">
+                        <div class="home_slider_background" style="background-image:url(/images/@Model.Baners[i].URL)"></div>
+                        @*<div class="home_slider_content_container">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="home_slider_content" data-animation-in="fadeIn" data-animation-out="animate-out fadeOut">
+                                                <div class="home_slider_title">Приветствуем вас в наше магазине.</div>
+                                                <div class="home_slider_subtitle">В нашем магазине в найдете все самые нужные товары, для комфортного выздоровления так как мы сотрудничаем с врачами и абсолютно точно знаем что вам нужно.</div>
+                                                <div class="button button_light home_button"><a href="#">Посмотреть товары</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>*@
+                    </div>
+                }
+            }
+        </div>
+
+        <!-- Home Slider Dots -->
+
+        <div class="home_slider_dots_container">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="home_slider_dots">
+                            <ul id="home_slider_custom_dots" class="home_slider_custom_dots">
+                                <li class="home_slider_custom_dot active">01.</li>
+                                <li class="home_slider_custom_dot">02.</li>
+                                <li class="home_slider_custom_dot">03.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Ads -->
+
+<div class="avds">
+    <div class="avds_container d-flex flex-lg-row flex-column align-items-start justify-content-between">
+        <div class="avds_small">
+            <div class="avds_background" style="background-image:url(/images/hand.jpg)"></div>
+            <div class="avds_small_inner">
+                <div class="avds_large_content">
+                    <div class="avds_title">Принимаем</div>
+                    <div class="avds_text">Вы сделаете доброе дело!<br>Если у вас остались костыли, коляски или другая ортопедия, и Вам они уже ни к чему, приходите к нам и мы с радостью примем их.</div>
+                    <div class="avds_link avds_link_large"><a href="/Home/About">Узнать условия</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="avds_large">
+            <div class="avds_background" style="background-image:url(/images/kreslo.jpg)"></div>
+            <div class="avds_large_container">
+                <div class="avds_large_content">
+                    <div class="avds_title">Продаем</div>
+                    <div class="avds_text">Основная наша деятельность - ПРОДАЖА И АРЕНДА ортопедии: Вы можете взять в аренду или купить у нас все необходимое по доступной цене.</div>
+                    <div class="avds_link avds_link_large"><a href="/Home/Market">Посмотреть все</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Products -->
+
+<div class="products">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+
+                <div class="product_grid">
+                    @for (int i = 0; i < Model.Products.Count; i++)
+                    {
+                        @if (Model.Products[i].Count <= 0)
+                        {
+                            continue;
+                        }
+                        <div class="product">
+                            <div class="product_image"><img src="~/images/products/@Model.Products[i].Image[0].Name" alt=""></div>
+                            <div class="product_extra product_new"><a href="">New</a></div>
+                            <div class="product_content">
+                                <div class="product_title"><a href="/Home/Product/?id=@Model.Products[i].Id"> @Model.Products[i].Name</a></div>
+                                <div class="product_price">@Model.Products[i].Price</div>
+                            </div>
+                        </div>
+                    }
+                    
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Ad -->
+
+<div class="avds_xl">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="avds_xl_container clearfix">
+                    <div class="avds_xl_background" style="background-image:url(/images/kolyaska.jpg)"></div>
+                    <div class="avds_xl_content">
+                        <div class="avds_title">Лучшие условия</div>
+                        <div class="avds_text">Наши цены и условия аренды - это то, что убедит Вас сотрудничать именно с нами.</div>
+                        @*<div class="avds_link avds_xl_link"><a href="categories.html">See More</a></div>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Icon Boxes -->
+
+<div class="icon_boxes">
+    <div class="container">
+        <div class="row icon_box_row">
+
+            <!-- Icon Box -->
+            <div class="col-lg-4 icon_box_col">
+                <div class="icon_box">
+                    <div class="icon_box_image"><img src="/images/icon_1.svg" alt=""></div>
+                    <div class="icon_box_title">Доставка</div>
+                    <div class="icon_box_text">
+                        <p>Вы можете оформить доставку товара на Ваш адрес проживания, и мы доставим Вам товар в кратчайшие сроки.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Icon Box -->
+            <div class="col-lg-4 icon_box_col">
+                <div class="icon_box">
+                    <div class="icon_box_image"><img src="/images/icon_2.svg" alt=""></div>
+                    <div class="icon_box_title">Качество</div>
+                    <div class="icon_box_text">
+                        <p>У нас только качественное медицинское оборудование. Наш рейтинг подтверждён многочисленными положительными отзывами.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Icon Box -->
+            <div class="col-lg-4 icon_box_col">
+                <div class="icon_box">
+                    <div class="icon_box_image"><img src="/images/icon_3.svg" alt=""></div>
+                    <div class="icon_box_title">Рекомендации</div>
+                    <div class="icon_box_text">
+                        <p>Наши услуги и товары рекомендованы квалифицированными медицинскими работниками.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Newsletter -->
+
+<div class="newsletter">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="newsletter_border"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <div class="newsletter_content text-center">
+                    <div class="newsletter_title">Подпишитесь на актуальную информацию</div>
+                    <div class="newsletter_text"><p>Оставьте Вашу электронную почту, и мы будем присылать вам информацию о новых поступлениях.</p></div>
+                    <div class="newsletter_form_container">
+                        <form action="/Home/Subscribe" id="newsletter_form" method="post" class="newsletter_form">
+                            <input name="email" type="email" class="newsletter_input" required="required">
+                            <button class="newsletter_button trans_200"><span>Подписаться</span></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
