@@ -139,15 +139,21 @@
     top: 10%;
     left: 10%;
     display:none;">
-    <div style="position: absolute; color: black; top: 0; right: 0; font-size: 20px; padding: 0 6px; background: red; cursor: pointer;" onclick="close_modal();">✕</div>
+    <div style="position: absolute; color: black; top: 0; right: 0; font-size: 20px; padding: 0 6px; background: red; cursor: pointer;" title="Закрыть" onclick="close_modal();">✕</div>
+    <a id="download" style="position: absolute; color: black; top: 0; left: 0; font-size: 20px; padding: 0 10px; background: #46ff46; cursor: pointer;" href="" title="Скачать картинку">↓</a>
 </div>
 <script type="text/javascript">
     function show_modal(src) {
         $('#modal').css('background-image', 'url(' + src + ')');
+        $('#download').attr('href', src);
+        var arr = src.split('/');
+        $('#download').attr('download', arr[arr.length - 1]);
         $('#modal').show();
     }
     function close_modal() {
         $('#modal').css('background-image', 'url()');
+        $('#download').attr('href', '');
+        $('#download').attr('download', '');
         $('#modal').hide();
     }
     function delete_it(id1, id2) {
